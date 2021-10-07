@@ -37,7 +37,7 @@
 
         <!--Onclick lister navigate directly to fragment_welcome-->
         <Button
-            android:id="@+id/instructionsButton"
+            android:id="@+id/goToStoreButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Instructions_button_text"
