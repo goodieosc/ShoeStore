@@ -50,11 +50,11 @@ class LoginFragment : Fragment() {
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_login,container,false)
 
-        //Reference (new instance Instance) to GameViewModel
+        //Reference (new instance Instance) to ViewModel
         Timber.i("Called ViewModelProvider")
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        //Pass the GameViewModel into the data binding:
+        //Pass the ViewModel into the data binding:
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
 
