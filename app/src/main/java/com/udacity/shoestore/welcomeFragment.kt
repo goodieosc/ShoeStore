@@ -1,16 +1,10 @@
 package com.udacity.shoestore
 
-import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import com.udacity.shoestore.databinding.FragmentLoginBinding
-import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,10 +13,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
+ * Use the [welcomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LoginFragment : Fragment() {
+class welcomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,33 +29,12 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private lateinit var viewModel: LoginViewModel
-
-    private lateinit var binding: FragmentLoginBinding
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Remove standard binding
-        //return inflater.inflate(R.layout.fragment_login, container, false)
-
-        // Inflate view and obtain an instance of the binding class
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_login,container,false)
-
-        //Reference (new instance Instance) to GameViewModel
-        Timber.i("Called ViewModelProvider")
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
-        //Pass the GameViewModel into the data binding:
-        binding.loginViewModel = viewModel
-        binding.lifecycleOwner = this
-
-
-
-        //Needed for data binding at end
-        return binding.root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_welcome, container, false)
     }
 
     companion object {
@@ -71,12 +44,12 @@ class LoginFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
+         * @return A new instance of fragment welcomeFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
+            welcomeFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
