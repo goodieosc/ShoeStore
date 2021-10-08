@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,12 +34,42 @@ class ShoeListFragment : Fragment() {
         }
     }
 
+    //Create ViewModel class first.
+    private lateinit var viewModel: ShoeListViewModel
+
+    //Create data reference in XML file first
+    private lateinit var binding: FragmentShoeListBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shoe_list, container, false)
+        // Remove standard binding
+        //return inflater.inflate(R.layout.fragment_shoe_list, container, false)
+
+        // Inflate view and obtain an instance of the binding class
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_shoe_list,container,false)
+
+        //Reference (new instance Instance) to ViewModel
+        Timber.i("Called ViewModelProvider")
+        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+
+        //Pass the ViewModel into the data binding:
+        binding.shoeListViewModel = viewModel
+        binding.lifecycleOwner = this
+
+
+
+//        //Observe changes to 'shoeName' using LiveData observer
+//        viewModel.shoeName.observe(viewLifecycleOwner, Observer { newShoe ->
+//            Timber.i("Shoe added $newShoe")
+//        })
+
+        //binding.linearLayout.addView()
+
+
+        //Needed for data binding at end
+        return binding.root
     }
 
     companion object {
