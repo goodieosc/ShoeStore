@@ -9,33 +9,12 @@ import com.udacity.shoestore.models.Shoe
 class SharedViewModel : ViewModel() {
 
 
-
-
-
-    val shoeList = mutableListOf<String>(
-        "Nike",
-        "Puma",
-        "Addidas",
-        "Reebok",
-        "New Balance",
-        "Asics",
-        "Brooks",
-        "Skechers",
-        "Under Armour",
-        "Merrell",
-        "Veja",
-    )
-
-
-    init {
-
-    }
-
+    //Store list of shoes as live data
     private val _shoes = MutableLiveData<MutableList<Shoe>>(mutableListOf())
     val shoes: LiveData<MutableList<Shoe>>
         get() = _shoes
 
-
+    //Add a new shoe to live data list
     fun saveCurrentDetail(detail: Shoe?) {
         detail?.let {
             _shoes.value?.add(it)

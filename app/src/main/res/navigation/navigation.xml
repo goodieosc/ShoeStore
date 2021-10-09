@@ -37,4 +37,9 @@
         android:name="com.udacity.shoestore.ShoeListFragment"
         android:label="fragment_shoe_list"
         tools:layout="@layout/fragment_shoe_list" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.udacity.shoestore.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>
