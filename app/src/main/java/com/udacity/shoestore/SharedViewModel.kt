@@ -2,12 +2,13 @@ package com.udacity.shoestore
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.udacity.shoestore.models.Shoe
 
-class ShoeListViewModel : ViewModel() {
+class SharedViewModel : ViewModel() {
 
 
-    val shoeName = MutableLiveData<String>()
 
 
 
@@ -25,14 +26,23 @@ class ShoeListViewModel : ViewModel() {
         "Veja",
     )
 
+
     init {
-        shoeName.value = ""
-    }
-
-    fun newShoe(newbrand: String){
-        shoeName.value = newbrand
 
     }
 
+    private val _shoes = MutableLiveData<MutableList<Shoe>>(mutableListOf())
+    val shoes: LiveData<MutableList<Shoe>>
+        get() = _shoes
 
-}
+
+    fun saveCurrentDetail(detail: Shoe?) {
+        detail?.let {
+            _shoes.value?.add(it)
+        }
+    }
+
+
+
+    }
+

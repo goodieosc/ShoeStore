@@ -6,8 +6,8 @@
     <!--Bind view directly with ViewModel-->
     <data>
         <variable
-            name="ShoeListViewModel"
-            type="com.udacity.shoestore.ShoeListViewModel" />
+            name="SharedViewModel"
+            type="com.udacity.shoestore.SharedViewModel" />
     </data>
 
     <RelativeLayout

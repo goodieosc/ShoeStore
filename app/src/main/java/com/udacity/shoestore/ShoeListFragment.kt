@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,7 +36,7 @@ class ShoeListFragment : Fragment() {
     }
 
     //Create ViewModel class first.
-    private lateinit var viewModel: ShoeListViewModel
+    private lateinit var viewModel: SharedViewModel
 
     //Create data reference in XML file first
     private lateinit var binding: FragmentShoeListBinding
@@ -52,18 +53,21 @@ class ShoeListFragment : Fragment() {
 
         //Reference (new instance Instance) to ViewModel
         Timber.i("Called ViewModelProvider")
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
 
         //Pass the ViewModel into the data binding:
-        binding.shoeListViewModel = viewModel
+        binding.sharedViewModel = viewModel
         binding.lifecycleOwner = this
 
 
+        val newShoe : Shoe = Shoe("Classic",10.5,"Reebok","Pumps", listOf("1","2"))
 
-//        //Observe changes to 'shoeName' using LiveData observer
-//        viewModel.shoeName.observe(viewLifecycleOwner, Observer { newShoe ->
-//            Timber.i("Shoe added $newShoe")
-//        })
+        viewModel.saveCurrentDetail(newShoe)
+
+        //Observe changes to 'shoeName' using LiveData observer
+        viewModel.shoes.observe(viewLifecycleOwner, Observer { newShoe ->
+            Timber.i("Shoe added $newShoe")
+        })
 
         //binding.linearLayout.addView()
 
