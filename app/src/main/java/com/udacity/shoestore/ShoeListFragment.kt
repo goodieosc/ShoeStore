@@ -60,13 +60,11 @@ class ShoeListFragment : Fragment() {
         binding.lifecycleOwner = this
 
 
-        val newShoe : Shoe = Shoe("Classic",10.5,"Reebok","Pumps", listOf("1","2"))
 
-        viewModel.saveCurrentDetail(newShoe)
 
         //Observe changes to 'shoeName' using LiveData observer
         viewModel.shoes.observe(viewLifecycleOwner, Observer { newShoe ->
-            Timber.i("Shoe added $newShoe")
+            Timber.i("Shoe observer updated $newShoe")
         })
 
         //binding.linearLayout.addView()

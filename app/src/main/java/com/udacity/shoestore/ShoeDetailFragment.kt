@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
+import java.text.DecimalFormat
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,9 +60,31 @@ class ShoeDetailFragment : Fragment() {
         binding.sharedViewModel = viewModel
         binding.lifecycleOwner = this
 
+
+        binding.saveButton.setOnClickListener {
+
+            val shoeName = binding.shoeNameEditText.text.toString()
+            val shoeSize :Double = binding.shoeSizeEditText.text.toString().toDouble()
+            val shoeCompany = binding.companyEditText.text.toString()
+            val shoeDecription = binding.descriptionEditText.text.toString()
+
+            val newShoe : Shoe = Shoe(shoeName,shoeSize,shoeCompany,shoeDecription, listOf("1","2","3"))
+
+            Timber.i("New shoe added $newShoe")
+
+            viewModel.saveCurrentDetail(newShoe)
+        }
+
+
+
+
+
+
         //Needed for data binding at end
         return binding.root
     }
+
+
 
     companion object {
         /**
