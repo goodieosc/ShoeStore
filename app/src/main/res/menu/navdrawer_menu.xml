@@ -5,4 +5,8 @@
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_baseline_help_24"
         android:title="About" />
+    <item
+        android:id="@+id/loginFragment"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Log out" />
 </menu>
