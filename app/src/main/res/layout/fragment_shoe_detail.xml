@@ -87,6 +87,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <!--Onclick lister navigate directly to fragment_shoe_list-->
         <Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"

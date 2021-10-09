@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.Shoe
@@ -73,6 +74,10 @@ class ShoeDetailFragment : Fragment() {
             Timber.i("New shoe added $newShoe")
 
             viewModel.saveCurrentDetail(newShoe)
+
+            //Navigate back to list fragment
+            view?.let { it1 -> viewModel.navigateToShoeListFragment(it1) }
+
         }
 
 
