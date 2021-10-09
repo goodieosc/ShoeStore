@@ -12,4 +12,6 @@
     <string name="instructions_title">Instructions</string>
     <string name="instructions_text">Where do you think you’re going? Aren’t you open?” Al: “Sorry, ma’am but unlike your mouth, we occasionally close</string>
     <string name="go_to_store_button">Go to store</string>
+    <string name="add_shoe_title">Add a new shoe to inventory</string>
+    <string name="save_button_text">Save</string>
 </resources>
