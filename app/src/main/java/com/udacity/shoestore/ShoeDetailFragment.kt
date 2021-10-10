@@ -7,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
-import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
-import java.text.DecimalFormat
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,10 +71,10 @@ class ShoeDetailFragment : Fragment() {
 
             Timber.i("New shoe added $newShoe")
 
-            viewModel.saveCurrentDetail(newShoe)
+            viewModel.addNewShoe(newShoe)
 
             //Navigate back to list fragment
-            view?.let { it1 -> viewModel.navigateToShoeListFragment(it1) }
+           findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
 
         }
 
