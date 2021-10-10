@@ -12,14 +12,14 @@ class SharedViewModel : ViewModel() {
 
 
     //Store list of shoes as live data
-    private val _shoes = MutableLiveData<MutableList<Shoe>>(mutableListOf())
-    val shoes: LiveData<MutableList<Shoe>>
-        get() = _shoes
+    private val _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
+    val shoesList: LiveData<MutableList<Shoe>>
+        get() = _shoesList
 
     //Add a new shoe to live data list
     fun saveCurrentDetail(detail: Shoe?) {
         detail?.let {
-            _shoes.value?.add(it)
+            _shoesList.value?.add(it)
         }
     }
 
