@@ -40,7 +40,8 @@
                 android:onClick="@{(view) -> SharedViewModel.navigateToShoeDetailFragment(view)}"
                 android:src="@android:drawable/ic_menu_add"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:rippleColor="@color/pink" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>

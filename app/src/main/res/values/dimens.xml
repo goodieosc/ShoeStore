@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="title_text">28dp</dimen>
+    <dimen name="minimum_textbox_width">88dp</dimen>
+    <dimen name="maximum_textbox_width">488dp</dimen>
+    <dimen name="button_width">150dp</dimen>
 </resources>
