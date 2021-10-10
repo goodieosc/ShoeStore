@@ -14,13 +14,14 @@ import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
 import kotlinx.android.synthetic.main.shoe_text_view.view.*
+import androidx.fragment.app.activityViewModels
 
 class ShoeListFragment : Fragment() {
 
     //Create ViewModel class first.
-    private lateinit var viewModel: SharedViewModel
+    //private lateinit var viewModel: SharedViewModel
 
-     private val viewModel: SharedViewModel by acvityViewModels()
+     private val viewModel: SharedViewModel by activityViewModels()
 
     //Create data reference in XML file first
     private lateinit var binding: FragmentShoeListBinding
