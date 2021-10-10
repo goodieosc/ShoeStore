@@ -1,13 +1,12 @@
 package com.udacity.shoestore
 
 import android.os.Bundle
-import android.util.Log
-import android.util.Log.i
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
@@ -20,9 +19,8 @@ import timber.log.Timber
 class ShoeListFragment : Fragment() {
 
     //Create ViewModel class first.
-    private lateinit var viewModel: SharedViewModel
-
-     //private val viewModel: SharedViewModel by activityViewModels()
+   // private lateinit var viewModel: SharedViewModel
+     private val viewModel: SharedViewModel by activityViewModels()  //activityViewModels() is used when a viewModel needs to be shared between fragments.
 
     //Create data reference in XML file first
     private lateinit var binding: FragmentShoeListBinding
@@ -40,8 +38,7 @@ class ShoeListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_shoe_list,container,false)
 
         //Reference (new instance Instance) to ViewModel
-        Timber.i("Called ViewModelProvider")
-        viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+         //viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
 
         //Pass the ViewModel into the data binding:
         binding.sharedViewModel = viewModel
