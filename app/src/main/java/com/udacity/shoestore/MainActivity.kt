@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         //bind to drawer layout
         drawerLayout = binding.drawerLayout
 
-
         //On screen navigate up button
         val navController = this.findNavController(R.id.myNavHostFragment)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)  //add in drawer layout

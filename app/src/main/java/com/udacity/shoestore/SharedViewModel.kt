@@ -10,33 +10,29 @@ import com.udacity.shoestore.models.Shoe
 
 class SharedViewModel : ViewModel() {
 
+        //Internal class list
+        private val _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
+        //Public class list
+        val shoesList: LiveData<MutableList<Shoe>>
+            get() = _shoesList
 
-    //Store list of shoes as live data
-    private val _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
-    val shoesList: LiveData<MutableList<Shoe>>
-        get() = _shoesList
-
-    //Add a new shoe to live data list
-    fun saveCurrentDetail(detail: Shoe?) {
-        detail?.let {
-            _shoesList.value?.add(it)
+        //Add a new shoe to live data list
+        fun addNewShoe(detail: Shoe?) {
+            detail?.let {
+                _shoesList.value?.add(it)
+            }
         }
-    }
 
-    fun navigateToShoeDetailFragment(view: View) {
-        val action = ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment()
-        Navigation.findNavController(view).navigate(action)
-
-    }
+        fun navigateToShoeDetailFragment(view: View) {
+            val action = ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
 
 
-    fun navigateToShoeListFragment(view: View) {
-        val action = ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
-        Navigation.findNavController(view).navigate(action)
-
-    }
-
-
+        fun navigateToShoeListFragment(view: View) {
+            val action = ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
 
     }
 

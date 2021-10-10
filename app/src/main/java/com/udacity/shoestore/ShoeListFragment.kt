@@ -8,13 +8,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.shoe_text_view.view.*
 import timber.log.Timber
-
-
 
 class ShoeListFragment : Fragment() {
 
@@ -24,8 +21,6 @@ class ShoeListFragment : Fragment() {
 
     //Create data reference in XML file first
     private lateinit var binding: FragmentShoeListBinding
-
-    private lateinit var shoeDataClass: Shoe
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,15 +32,12 @@ class ShoeListFragment : Fragment() {
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_shoe_list,container,false)
 
-        //Reference (new instance Instance) to ViewModel
-         //viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+        //Reference (new instance Instance) to ViewModel - Not needed as using a shared viewModel
+        //viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
 
         //Pass the ViewModel into the data binding:
         binding.sharedViewModel = viewModel
         binding.lifecycleOwner = this
-
-
-
 
         //Observe changes to 'shoeName' using LiveData observer
         viewModel.shoesList.observe(viewLifecycleOwner, Observer {
@@ -65,20 +57,18 @@ class ShoeListFragment : Fragment() {
                         "\n Size: ${it.size}" +
                         "\n Description: ${it.description}"
 
+                Timber.i(textViewString)
+
                 textView.shoe.text = textViewString
 
                 frameLayout.addView(textView)
-                Timber.i("Name of shoe added ${it.name}")
+
+                Timber.i("Shoe added: $textView")
 
             }
-
-
         })
 
         //Needed for data binding at end
         return binding.root
     }
-
-
-
 }
