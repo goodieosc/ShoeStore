@@ -1,16 +1,23 @@
 package com.udacity.shoestore
 
+import android.os.Parcelable
 import android.view.View
+import androidx.databinding.*
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.udacity.shoestore.models.Shoe
+import timber.log.Timber
+import android.widget.TextView
+
+import androidx.databinding.BindingAdapter
+import kotlinx.android.parcel.Parcelize
+
 
 class SharedViewModel : ViewModel() {
 
-        //Internal class list
+         //Internal class list
         private val _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
         //Public class list
         val shoesList: LiveData<MutableList<Shoe>>
@@ -35,5 +42,8 @@ class SharedViewModel : ViewModel() {
             Navigation.findNavController(view).navigate(action)
         }
 
-    }
+
+}
+
+
 

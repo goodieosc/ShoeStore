@@ -7,8 +7,13 @@
     <!--Bind view directly with ViewModel-->
     <data>
         <variable
+            name="shoeDataClass"
+            type="com.udacity.shoestore.models.Shoe" />
+
+        <variable
             name="SharedViewModel"
             type="com.udacity.shoestore.SharedViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,100 +32,98 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/shoeNameEditText"
+            android:id="@+id/nameLayout"
+            style="@style/edit_text_box"
             android:layout_marginTop="16dp"
             android:hint="Shoe name:"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-            style="@style/edit_text_box">
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_light"
+                android:id="@+id/shoeNameEditText"
+                android:text="@={shoeDataClass.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_light" />
-
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sizeLayout"
+            style="@style/edit_text_box"
+            android:layout_marginTop="16dp"
+            android:hint="Shoe Size:"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameLayout">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_light"
+                android:id="@+id/shoeSizeEditText"
+                android:text="@={shoeDataClass.size}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/companyEditText"
+            android:id="@+id/companyLayout"
             style="@style/edit_text_box"
             android:layout_marginTop="16dp"
             android:hint="Company name:"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shoeNameEditText">
-
+            app:layout_constraintTop_toBottomOf="@+id/sizeLayout">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik_light" />
-
+                android:fontFamily="@font/rubik_light"
+                android:id="@+id/companyEditText"
+                android:text="@={shoeDataClass.company}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/shoeSizeEditText"
-        style="@style/edit_text_box"
-        android:layout_marginTop="16dp"
-        android:hint="Shoe Size:"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/companyEditText">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_light" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/descriptionEditText"
+            android:id="@+id/descriptionLayout"
             style="@style/edit_text_box"
             android:layout_marginTop="16dp"
             android:hint="Description:"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shoeSizeEditText">
-
+            app:layout_constraintTop_toBottomOf="@+id/companyLayout">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik_light" />
-
+                android:fontFamily="@font/rubik_light"
+                android:id="@+id/descriptionEditText"
+                android:text="@={shoeDataClass.description}" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <!--Onclick lister navigate directly to fragment_shoe_list-->
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="@android:string/cancel"
-            android:onClick="@{(view) -> SharedViewModel.navigateToShoeListFragment(view)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            style="@style/button_style"/>
-
-        <!--Onclick lister navigate directly to fragment_shoe_list-->
         <Button
             android:id="@+id/saveButton"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/save_button_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
-            style="@style/button_style"/>
+            app:layout_constraintTop_toBottomOf="@+id/descriptionLayout" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:onClick="@{(view) -> SharedViewModel.navigateToShoeListFragment(view)}"
+            android:text="@android:string/cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

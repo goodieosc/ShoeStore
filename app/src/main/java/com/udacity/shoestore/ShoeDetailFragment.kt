@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.udacity.shoestore.databinding.ActivityMainBinding
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
@@ -29,22 +30,24 @@ class ShoeDetailFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_shoe_detail, container, false)
 
         // Inflate view and obtain an instance of the binding class
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
+        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
+
+        val binding: FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
+
 
         //Reference (new instance Instance) to ViewModel - Not needed as using a shared viewModel
         //viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
 
         //Pass the ViewModel into the data binding:
         binding.sharedViewModel = viewModel
-        binding.lifecycleOwner = this
-
+        binding.setLifecycleOwner(this)
 
         binding.saveButton.setOnClickListener {
 
-            val shoeName = binding.shoeNameEditText.editText?.text.toString()
-            val shoeSize: Double = binding.shoeSizeEditText.editText?.text.toString().toDouble()
-            val shoeCompany = binding.companyEditText.editText?.text.toString()
-            val shoeDescription = binding.descriptionEditText.editText?.text.toString()
+            val shoeName = binding.shoeNameEditText.text.toString()
+            val shoeSize = binding.shoeSizeEditText.text.toString()
+            val shoeCompany = binding.companyEditText.text.toString()
+            val shoeDescription = binding.descriptionEditText.text.toString()
 
             val newShoe: Shoe =
                 Shoe(shoeName, shoeSize, shoeCompany, shoeDescription, listOf("1", "2", "3"))
@@ -54,7 +57,7 @@ class ShoeDetailFragment : Fragment() {
             viewModel.addNewShoe(newShoe)
 
             //Navigate back to list fragment
-            view?.let { it1 -> viewModel.navigateToShoeListFragment(it1) }
+            findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
 
         }
 
