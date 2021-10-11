@@ -9,6 +9,11 @@
         <variable
             name="SharedViewModel"
             type="com.udacity.shoestore.SharedViewModel" />
+
+        <variable
+            name="newShoe"
+            type="com.udacity.shoestore.models.Shoe"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +36,7 @@
             android:layout_marginTop="16dp"
             android:hint="Shoe name:"
             android:inputType="text"
+            android:text="@={newShoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView"
@@ -50,6 +56,7 @@
             android:layout_marginTop="16dp"
             android:hint="Company name:"
             android:inputType="text"
+            android:text="@={newShoe.company}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeNameEditText">
@@ -68,6 +75,7 @@
         android:layout_marginTop="16dp"
         android:hint="Shoe Size:"
         android:inputType="text"
+        android:text="@={newShoe.size}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/companyEditText">
@@ -86,6 +94,7 @@
             android:layout_marginTop="16dp"
             android:hint="Description:"
             android:inputType="text"
+            android:text="@={newShoe.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeSizeEditText">
@@ -118,6 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/save_button_text"
+            android:onClick="@{() -> SharedViewModel.saveShoeAndNavigateToListFragment()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
