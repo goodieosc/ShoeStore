@@ -15,4 +15,5 @@
     <string name="add_shoe_title">Add a new shoe to inventory</string>
     <string name="save_button_text">Save</string>
     <string name="about_text_box">Marcy: “Why must you always be so negative?” Al: “Why did you cross the road?” \n</string>
+    <string name="add_new_shoe">Add new shoe</string>
 </resources>

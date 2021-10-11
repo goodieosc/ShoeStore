@@ -23,6 +23,7 @@ class SharedViewModel : ViewModel() {
             }
         }
 
+
         fun navigateToShoeDetailFragment(view: View) {
             val action = ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment()
             Navigation.findNavController(view).navigate(action)

@@ -26,55 +26,77 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/shoeNameEditText"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:ems="10"
             android:hint="Shoe name:"
-            android:inputType="textPersonName"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            style="@style/edit_text_box">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_light" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/companyEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/edit_text_box"
             android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Company:"
-            android:inputType="textPersonName"
+            android:hint="Company name:"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shoeNameEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/shoeNameEditText">
 
-        <EditText
-            android:id="@+id/shoeSizeEditText"
-            android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_light" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/shoeSizeEditText"
+        style="@style/edit_text_box"
+        android:layout_marginTop="16dp"
+        android:hint="Shoe Size:"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/companyEditText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Shoe Size:"
-            android:inputType="numberDecimal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/companyEditText" />
+            android:fontFamily="@font/rubik_light" />
 
-        <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/descriptionEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/edit_text_box"
             android:layout_marginTop="16dp"
-            android:ems="10"
             android:hint="Description:"
-            android:inputType="textPersonName"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shoeSizeEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/shoeSizeEditText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_light" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <!--Onclick lister navigate directly to fragment_shoe_list-->
         <Button
@@ -86,7 +108,8 @@
             android:onClick="@{(view) -> SharedViewModel.navigateToShoeListFragment(view)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/button_style"/>
 
         <!--Onclick lister navigate directly to fragment_shoe_list-->
         <Button
@@ -97,6 +120,7 @@
             android:text="@string/save_button_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
+            style="@style/button_style"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

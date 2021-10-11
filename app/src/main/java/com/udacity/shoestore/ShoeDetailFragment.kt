@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
@@ -40,13 +41,13 @@ class ShoeDetailFragment : Fragment() {
 
         binding.saveButton.setOnClickListener {
 
-            val shoeName = binding.shoeNameEditText.text.toString()
-            val shoeSize: Double = binding.shoeSizeEditText.text.toString().toDouble()
-            val shoeCompany = binding.companyEditText.text.toString()
-            val shoeDecription = binding.descriptionEditText.text.toString()
+            val shoeName = binding.shoeNameEditText.editText?.text.toString()
+            val shoeSize: Double = binding.shoeSizeEditText.editText?.text.toString().toDouble()
+            val shoeCompany = binding.companyEditText.editText?.text.toString()
+            val shoeDescription = binding.descriptionEditText.editText?.text.toString()
 
             val newShoe: Shoe =
-                Shoe(shoeName, shoeSize, shoeCompany, shoeDecription, listOf("1", "2", "3"))
+                Shoe(shoeName, shoeSize, shoeCompany, shoeDescription, listOf("1", "2", "3"))
 
             Timber.i("New shoe added $newShoe")
 
@@ -60,6 +61,8 @@ class ShoeDetailFragment : Fragment() {
         //Needed for data binding at end
         return binding.root
     }
+
+
 }
 
 

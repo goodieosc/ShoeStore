@@ -58,9 +58,6 @@ class LoginFragment : Fragment() {
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
 
-        //add menu button
-        setHasOptionsMenu(true)
-
         //Needed for data binding at end
         return binding.root
     }
