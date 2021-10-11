@@ -32,6 +32,7 @@ class ShoeDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
 
 
+
         //Reference (new instance Instance) to ViewModel - Not needed as using a shared viewModel
         //viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
 
@@ -39,24 +40,24 @@ class ShoeDetailFragment : Fragment() {
         binding.sharedViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.saveButton.setOnClickListener {
-
-            val shoeName = binding.newShoe.name
-            val shoeSize: Double = binding.newShoe.size
-            val shoeCompany = binding.newShoe.company
-            val shoeDescription = binding.newShoe.description
-
-            val newShoe: Shoe =
-                Shoe(shoeName, shoeSize, shoeCompany, shoeDescription, listOf("1", "2", "3"))
-
-            Timber.i("New shoe added $newShoe")
-
-            viewModel.addNewShoe(newShoe)
-
-            //Navigate back to list fragment
-            findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
-
-        }
+//        binding.saveButton.setOnClickListener {
+//
+//            val shoeName = binding.sharedViewModel.name
+//            val shoeSize: Double = binding.newShoe.size
+//            val shoeCompany = binding.newShoe.company
+//            val shoeDescription = binding.newShoe.description
+//
+//            val newShoe: Shoe =
+//                Shoe(shoeName, shoeSize, shoeCompany, shoeDescription, listOf("1", "2", "3"))
+//
+//            Timber.i("New shoe added $newShoe")
+//
+//            viewModel.addNewShoe(newShoe)
+//
+//            //Navigate back to list fragment
+//            findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+//
+//        }
 
         //Needed for data binding at end
         return binding.root

@@ -1,27 +1,40 @@
 package com.udacity.shoestore
 
 import android.view.View
-import android.widget.EditText
-import androidx.databinding.Bindable
-import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseBindingAdapter
-import androidx.databinding.Observable
+import androidx.databinding.*
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
+import android.widget.TextView
 
-class SharedViewModel : ViewModel() {
+import androidx.databinding.BindingAdapter
 
-    @InverseBindingAdapter(attribute = "android:text")
-    fun EditText.getFloatFromBinding(): Float? {
-        val result=text.toString()
 
-        return result.toFloat()
-    }
+class SharedViewModel : ViewModel(){
+
+    //LiveData created for all the EditText Views
+    private var _name = MutableLiveData<String>()
+    val name: LiveData<String>
+        get() = _name
+    var shoeName = ""
+
+    private var _size = MutableLiveData<Double>()
+    val size: LiveData<Double>
+        get() = _size
+    var shoeSize = 0.0
+
+    private var _description = MutableLiveData<String>()
+    val description: LiveData<String>
+        get() = _description
+    var shoeDescription = ""
+
+    private var _company = MutableLiveData<String>()
+    val company: LiveData<String>
+        get() = _company
+    var shoeCompany = ""
 
         //Internal class list
         private val _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
@@ -29,6 +42,26 @@ class SharedViewModel : ViewModel() {
         val shoesList: LiveData<MutableList<Shoe>>
             get() = _shoesList
 
+
+
+        fun saveNewShoeToList() {
+
+            _name.value = shoeName
+            _size.value = shoeSize
+            _description.value = shoeDescription
+            _company.value = shoeCompany
+
+            val newShoe: Shoe = Shoe(shoeName, shoeSize, shoeCompany, shoeDescription, listOf("1", "2", "3"))
+
+            Timber.i("New shoe added $newShoe")
+
+            addNewShoe(newShoe)
+
+            //Navigate back to list fragment
+            val action = ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
+            //Navigation.findNavController(view).navigate(action)
+
+        }
 
         //Add a new shoe to live data list
         fun addNewShoe(detail: Shoe?) {
@@ -48,6 +81,7 @@ class SharedViewModel : ViewModel() {
             val action = ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
             Navigation.findNavController(view).navigate(action)
         }
+
 
 
 }
